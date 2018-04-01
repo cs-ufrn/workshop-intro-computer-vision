@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Arch Linux) (preloaded format=pdflatex 2018.3.4)  30 MAR 2018 11:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Arch Linux) (preloaded format=pdflatex 2018.3.4)  1 APR 2018 20:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1328,7 +1328,7 @@ Overfull \hbox (4.86665pt too wide) in paragraph at lines 78--78
 
 ] [9
 
-] (./introduction.toc) [10
+] (./tex/aplicacoes.tex) (./introduction.toc) [10
 
 ]
 \tf@nav=\write6
@@ -1340,11 +1340,11 @@ Overfull \hbox (4.86665pt too wide) in paragraph at lines 78--78
 \tf@snm=\write8
 \openout8 = `introduction.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 170.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 170.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 172.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 172.
  (./introduction.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 170.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 170.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 172.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 172.
 Package rerunfilecheck Info: File `introduction.out' has not changed.
 (rerunfilecheck)             Checksum: DE91307F528A0ED6D26901B16D007691;369.
 
@@ -1353,8 +1353,8 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 20444 strings out of 492982
- 368727 string characters out of 6138580
+ 20448 strings out of 492982
+ 368779 string characters out of 6138580
  541164 words of memory out of 5000000
  23530 multiletter control sequences out of 15000+600000
  15356 words of font info for 55 fonts, out of 8000000 for 9000
