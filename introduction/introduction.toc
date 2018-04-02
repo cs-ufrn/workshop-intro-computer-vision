@@ -2,6 +2,6 @@
 \beamer@sectionintoc {1}{O gap sem\IeC {\^a}ntico}{2}{0}{1}
 \beamer@sectionintoc {2}{Vis\IeC {\~a}o Computacional}{8}{0}{2}
 \beamer@subsectionintoc {2}{1}{Para al\IeC {\'e}m de \emph {pixels}}{9}{0}{2}
-\beamer@subsectionintoc {2}{2}{Aplica\IeC {\c c}\IeC {\~o}es}{10}{0}{2}
-\beamer@subsectionintoc {2}{3}{T\IeC {\'e}cnicas}{10}{0}{2}
-\beamer@sectionintoc {3}{Aprendizagem de M\IeC {\'a}quina}{10}{0}{3}
+\beamer@subsectionintoc {2}{2}{Aplica\IeC {\c c}\IeC {\~o}es}{14}{0}{2}
+\beamer@subsectionintoc {2}{3}{T\IeC {\'e}cnicas}{14}{0}{2}
+\beamer@sectionintoc {3}{Aprendizagem de M\IeC {\'a}quina}{14}{0}{3}
