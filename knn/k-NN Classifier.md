@@ -3,12 +3,12 @@
 
 O **k-NN** é o classificador mais simples na área de aprendizado de máquina. Diferentemente das redes neurais, não se realiza de fato um **aprendizado**, em vez disso, o algoritmo verifica a distância entre o objeto a ser classificado e os vetores de característica. Devido a sua simplicidade, é bastante utilizado em *benchmarks* de classificadores mais complexos como, Artificial Neural Network (**ANN**) e Suport Vector Machine (**SVM**).
 
-<figure>
-    <img src="https://amueller.github.io/applied_ml_spring_2017/images/classifier_comparison.png" alt="Classifier Comparison">
-    <figcaption>Figura 1 - Comparação entre os classificadores (https://amueller.github.io/applied_ml_spring_2017/images/classifier_comparison.png).</figcaption>
-</figure>,
-
-![classifier_comparison](https://amueller.github.io/applied_ml_spring_2017/images/classifier_comparison.png)
+<center>
+    <figure>
+        <img src="https://amueller.github.io/applied_ml_spring_2017/images/classifier_comparison.png" alt="Classifier Comparison">
+        <figcaption>Figura 1 - Comparação entre os classificadores (https://amueller.github.io/applied_ml_spring_2017/images/classifier_comparison.png).</figcaption>
+    </figure>
+</center>
 
 ## 1. Introdução
 
@@ -43,79 +43,12 @@ class_column = len (dataset.columns) - 1
 # Checando os dados
 print (dataset)
 
+class_names = pd.unique(dataset[class_column])
+
 # Descobrindo o número de instâncias por classes
-for i in pd.unique(dataset[class_column]):
+for i in class_names:
     print( i + ': ' + str(len (dataset.loc[dataset[class_column] == i])) )
 ```
-
-           0    1    2    3               4
-    0    5.1  3.5  1.4  0.2     Iris-setosa
-    1    4.9  3.0  1.4  0.2     Iris-setosa
-    2    4.7  3.2  1.3  0.2     Iris-setosa
-    3    4.6  3.1  1.5  0.2     Iris-setosa
-    4    5.0  3.6  1.4  0.2     Iris-setosa
-    5    5.4  3.9  1.7  0.4     Iris-setosa
-    6    4.6  3.4  1.4  0.3     Iris-setosa
-    7    5.0  3.4  1.5  0.2     Iris-setosa
-    8    4.4  2.9  1.4  0.2     Iris-setosa
-    9    4.9  3.1  1.5  0.1     Iris-setosa
-    10   5.4  3.7  1.5  0.2     Iris-setosa
-    11   4.8  3.4  1.6  0.2     Iris-setosa
-    12   4.8  3.0  1.4  0.1     Iris-setosa
-    13   4.3  3.0  1.1  0.1     Iris-setosa
-    14   5.8  4.0  1.2  0.2     Iris-setosa
-    15   5.7  4.4  1.5  0.4     Iris-setosa
-    16   5.4  3.9  1.3  0.4     Iris-setosa
-    17   5.1  3.5  1.4  0.3     Iris-setosa
-    18   5.7  3.8  1.7  0.3     Iris-setosa
-    19   5.1  3.8  1.5  0.3     Iris-setosa
-    20   5.4  3.4  1.7  0.2     Iris-setosa
-    21   5.1  3.7  1.5  0.4     Iris-setosa
-    22   4.6  3.6  1.0  0.2     Iris-setosa
-    23   5.1  3.3  1.7  0.5     Iris-setosa
-    24   4.8  3.4  1.9  0.2     Iris-setosa
-    25   5.0  3.0  1.6  0.2     Iris-setosa
-    26   5.0  3.4  1.6  0.4     Iris-setosa
-    27   5.2  3.5  1.5  0.2     Iris-setosa
-    28   5.2  3.4  1.4  0.2     Iris-setosa
-    29   4.7  3.2  1.6  0.2     Iris-setosa
-    ..   ...  ...  ...  ...             ...
-    120  6.9  3.2  5.7  2.3  Iris-virginica
-    121  5.6  2.8  4.9  2.0  Iris-virginica
-    122  7.7  2.8  6.7  2.0  Iris-virginica
-    123  6.3  2.7  4.9  1.8  Iris-virginica
-    124  6.7  3.3  5.7  2.1  Iris-virginica
-    125  7.2  3.2  6.0  1.8  Iris-virginica
-    126  6.2  2.8  4.8  1.8  Iris-virginica
-    127  6.1  3.0  4.9  1.8  Iris-virginica
-    128  6.4  2.8  5.6  2.1  Iris-virginica
-    129  7.2  3.0  5.8  1.6  Iris-virginica
-    130  7.4  2.8  6.1  1.9  Iris-virginica
-    131  7.9  3.8  6.4  2.0  Iris-virginica
-    132  6.4  2.8  5.6  2.2  Iris-virginica
-    133  6.3  2.8  5.1  1.5  Iris-virginica
-    134  6.1  2.6  5.6  1.4  Iris-virginica
-    135  7.7  3.0  6.1  2.3  Iris-virginica
-    136  6.3  3.4  5.6  2.4  Iris-virginica
-    137  6.4  3.1  5.5  1.8  Iris-virginica
-    138  6.0  3.0  4.8  1.8  Iris-virginica
-    139  6.9  3.1  5.4  2.1  Iris-virginica
-    140  6.7  3.1  5.6  2.4  Iris-virginica
-    141  6.9  3.1  5.1  2.3  Iris-virginica
-    142  5.8  2.7  5.1  1.9  Iris-virginica
-    143  6.8  3.2  5.9  2.3  Iris-virginica
-    144  6.7  3.3  5.7  2.5  Iris-virginica
-    145  6.7  3.0  5.2  2.3  Iris-virginica
-    146  6.3  2.5  5.0  1.9  Iris-virginica
-    147  6.5  3.0  5.2  2.0  Iris-virginica
-    148  6.2  3.4  5.4  2.3  Iris-virginica
-    149  5.9  3.0  5.1  1.8  Iris-virginica
-    
-    [150 rows x 5 columns]
-    Iris-setosa: 50
-    Iris-versicolor: 50
-    Iris-virginica: 50
-
 
 ## 2. Princípio de funcionamento
 
@@ -155,7 +88,7 @@ def manhattan(p, q):
     return local_sum
 ```
 
-## 3. Pré-processamento
+## 3. Processamento
 
 O processo geral de implementação do **k-NN** segue as seguintes etapas:
 
@@ -174,6 +107,8 @@ O processo geral de implementação do **k-NN** segue as seguintes etapas:
     </li>
 </ul>
 
+### 3.1 Obtenção dos dados
+
 
 ```python
 import numpy as np
@@ -182,14 +117,16 @@ import numpy as np
 dataset = dataset.iloc[np.random.permutation(len(dataset))]
 
 # Separando o dataset por classes
-setosa     = dataset.loc[dataset[class_column] == 'Iris-setosa']
-versicolor = dataset.loc[dataset[class_column] == 'Iris-versicolor']
-virginica  = dataset.loc[dataset[class_column] == 'Iris-virginica']
+setosa     = dataset.loc[dataset[class_column] == class_names[0]]
+versicolor = dataset.loc[dataset[class_column] == class_names[1]]
+virginica  = dataset.loc[dataset[class_column] == class_names[2]]
 ```
+
+### 3.2 Separação dos conjuntos
 
 
 ```python
-train_percentage = 0.75
+train_percentage = 0.8
 
 # Obtendo os conjuntos de treino e de testes
 trainset = pd.concat([    setosa[0: int (len(setosa)     * train_percentage + 1)],
@@ -202,17 +139,21 @@ testset =  pd.concat([    setosa[int (len(setosa)     * train_percentage + 1) : 
 
 ```
 
+### 3.3 Classificação
+
 
 ```python
 from operator import itemgetter
 from collections import Counter
 
 # Criando a função de classificação
-def knn(k, trainset, element):
+def knn(k, train, element):
     distance = []
     
-    for _, row in trainset.iterrows():
-        distance.append((manhattan(row[0:class_column], element[0:class_column]), row[class_column]))
+    local_class_column = len (train.columns) - 1
+    
+    for _, row in train.iterrows():
+        distance.append((manhattan(row[0:local_class_column], element[0:local_class_column]), row[local_class_column]))
     
     distance.sort(key=itemgetter(0))
     distance = [classes[1] for classes in distance[0:k]]
@@ -222,173 +163,67 @@ def knn(k, trainset, element):
     return max(most_common, key=most_common.get)
 
 # Função de avaliação de acurácia
-def evaluate(k, trainset, testset):
+def evaluate(k, train, test):
     acc = 0
-    for _, row in testset.iterrows():
-        if( knn(k, trainset, row) == row[class_column] ):
+    
+    local_class_column = len (train.columns) - 1
+    
+    for _, row in test.iterrows():
+        if( knn(k, train, row) == row[local_class_column] ):
             acc += 1
     
-    return acc / len(testset)
+    return acc / len(test)
 
 # Descobrindo a acurácia para todas as configurações possíveis
-def evaluate_by_config(trainset, testset):
+def evaluate_by_config(train, test):
     for k in range(1,len(dataset) + 1):
-        print("K = " + str(k) + ", acc = " + str(evaluate(k, trainset, testset)))
-        
+        print("K = " + str(k) + ", acc = " + str(evaluate(k, train, test)))
+```
+
+
+```python
+# Checando a melhor configuração
 evaluate_by_config(trainset, testset)
 ```
 
-    K = 1, acc = 0.9722222222222222
-    K = 2, acc = 0.9722222222222222
-    K = 3, acc = 1.0
-    K = 4, acc = 0.9722222222222222
-    K = 5, acc = 1.0
-    K = 6, acc = 0.9722222222222222
-    K = 7, acc = 0.9722222222222222
-    K = 8, acc = 0.9722222222222222
-    K = 9, acc = 1.0
-    K = 10, acc = 0.9722222222222222
-    K = 11, acc = 0.9722222222222222
-    K = 12, acc = 0.9722222222222222
-    K = 13, acc = 0.9722222222222222
-    K = 14, acc = 0.9722222222222222
-    K = 15, acc = 0.9722222222222222
-    K = 16, acc = 0.9722222222222222
-    K = 17, acc = 0.9722222222222222
-    K = 18, acc = 0.9722222222222222
-    K = 19, acc = 1.0
-    K = 20, acc = 0.9722222222222222
-    K = 21, acc = 0.9722222222222222
-    K = 22, acc = 0.9722222222222222
-    K = 23, acc = 0.9444444444444444
-    K = 24, acc = 0.9722222222222222
-    K = 25, acc = 0.9444444444444444
-    K = 26, acc = 0.9444444444444444
-    K = 27, acc = 0.9444444444444444
-    K = 28, acc = 0.9444444444444444
-    K = 29, acc = 0.9166666666666666
-    K = 30, acc = 0.9166666666666666
-    K = 31, acc = 0.9166666666666666
-    K = 32, acc = 0.9444444444444444
-    K = 33, acc = 0.9166666666666666
-    K = 34, acc = 0.9722222222222222
-    K = 35, acc = 0.9444444444444444
-    K = 36, acc = 0.9722222222222222
-    K = 37, acc = 0.9444444444444444
-    K = 38, acc = 0.9444444444444444
-    K = 39, acc = 0.9166666666666666
-    K = 40, acc = 0.9444444444444444
-    K = 41, acc = 0.9166666666666666
-    K = 42, acc = 0.9166666666666666
-    K = 43, acc = 0.9166666666666666
-    K = 44, acc = 0.9166666666666666
-    K = 45, acc = 0.9166666666666666
-    K = 46, acc = 0.9166666666666666
-    K = 47, acc = 0.9166666666666666
-    K = 48, acc = 0.9166666666666666
-    K = 49, acc = 0.8888888888888888
-    K = 50, acc = 0.8888888888888888
-    K = 51, acc = 0.8888888888888888
-    K = 52, acc = 0.9166666666666666
-    K = 53, acc = 0.8888888888888888
-    K = 54, acc = 0.9166666666666666
-    K = 55, acc = 0.9166666666666666
-    K = 56, acc = 0.9166666666666666
-    K = 57, acc = 0.8888888888888888
-    K = 58, acc = 0.8888888888888888
-    K = 59, acc = 0.8888888888888888
-    K = 60, acc = 0.9166666666666666
-    K = 61, acc = 0.8611111111111112
-    K = 62, acc = 0.8611111111111112
-    K = 63, acc = 0.8611111111111112
-    K = 64, acc = 0.8611111111111112
-    K = 65, acc = 0.8333333333333334
-    K = 66, acc = 0.8333333333333334
-    K = 67, acc = 0.8333333333333334
-    K = 68, acc = 0.8611111111111112
-    K = 69, acc = 0.8333333333333334
-    K = 70, acc = 0.8333333333333334
-    K = 71, acc = 0.8333333333333334
-    K = 72, acc = 0.9166666666666666
-    K = 73, acc = 0.8888888888888888
-    K = 74, acc = 0.8888888888888888
-    K = 75, acc = 0.8333333333333334
-    K = 76, acc = 0.9444444444444444
-    K = 77, acc = 0.9444444444444444
-    K = 78, acc = 0.9444444444444444
-    K = 79, acc = 0.9444444444444444
-    K = 80, acc = 0.9444444444444444
-    K = 81, acc = 0.9166666666666666
-    K = 82, acc = 0.9444444444444444
-    K = 83, acc = 0.9444444444444444
-    K = 84, acc = 0.9444444444444444
-    K = 85, acc = 0.9722222222222222
-    K = 86, acc = 0.9444444444444444
-    K = 87, acc = 0.9722222222222222
-    K = 88, acc = 0.9722222222222222
-    K = 89, acc = 0.9722222222222222
-    K = 90, acc = 0.9722222222222222
-    K = 91, acc = 0.9722222222222222
-    K = 92, acc = 0.9722222222222222
-    K = 93, acc = 0.9722222222222222
-    K = 94, acc = 0.9722222222222222
-    K = 95, acc = 0.9722222222222222
-    K = 96, acc = 0.9722222222222222
-    K = 97, acc = 0.9722222222222222
-    K = 98, acc = 0.9722222222222222
-    K = 99, acc = 0.9722222222222222
-    K = 100, acc = 0.9722222222222222
-    K = 101, acc = 0.9722222222222222
-    K = 102, acc = 0.9722222222222222
-    K = 103, acc = 0.9722222222222222
-    K = 104, acc = 0.9722222222222222
-    K = 105, acc = 0.9722222222222222
-    K = 106, acc = 0.9722222222222222
-    K = 107, acc = 0.9722222222222222
-    K = 108, acc = 0.9722222222222222
-    K = 109, acc = 0.9722222222222222
-    K = 110, acc = 0.9722222222222222
-    K = 111, acc = 0.9722222222222222
-    K = 112, acc = 0.9722222222222222
-    K = 113, acc = 0.9722222222222222
-    K = 114, acc = 0.9722222222222222
-    K = 115, acc = 0.9722222222222222
-    K = 116, acc = 0.9722222222222222
-    K = 117, acc = 0.9722222222222222
-    K = 118, acc = 0.9722222222222222
-    K = 119, acc = 0.9722222222222222
-    K = 120, acc = 0.9722222222222222
-    K = 121, acc = 0.9722222222222222
-    K = 122, acc = 0.9722222222222222
-    K = 123, acc = 0.9722222222222222
-    K = 124, acc = 0.9722222222222222
-    K = 125, acc = 0.9722222222222222
-    K = 126, acc = 0.9722222222222222
-    K = 127, acc = 0.9722222222222222
-    K = 128, acc = 0.9722222222222222
-    K = 129, acc = 0.9722222222222222
-    K = 130, acc = 0.9722222222222222
-    K = 131, acc = 0.9722222222222222
-    K = 132, acc = 0.9722222222222222
-    K = 133, acc = 0.9722222222222222
-    K = 134, acc = 0.9722222222222222
-    K = 135, acc = 0.9722222222222222
-    K = 136, acc = 0.9722222222222222
-    K = 137, acc = 0.9722222222222222
-    K = 138, acc = 0.9722222222222222
-    K = 139, acc = 0.9722222222222222
-    K = 140, acc = 0.9722222222222222
-    K = 141, acc = 0.9722222222222222
-    K = 142, acc = 0.9722222222222222
-    K = 143, acc = 0.9722222222222222
-    K = 144, acc = 0.9722222222222222
-    K = 145, acc = 0.9722222222222222
-    K = 146, acc = 0.9722222222222222
-    K = 147, acc = 0.9722222222222222
-    K = 148, acc = 0.9722222222222222
-    K = 149, acc = 0.9722222222222222
-    K = 150, acc = 0.9722222222222222
+## 4 Reduzindo os dados e mantendo acurácia
 
+
+```python
+# Criando uma cópia dos dados
+cp_dataset = dataset.copy()
+
+# Alterando a label da classe para um número
+index = 1
+for i in class_names:
+    cp_dataset.loc[cp_dataset[class_column] == i, 4] = index
+    index += 1
+    
+# Novo dataset
+print(cp_dataset)
+
+# Correlação entre os dados
+print("\nCorrelação: ")
+print(cp_dataset.corr())
+
+# Covariância entre os dados
+print("\nCovariância: ")
+print(cp_dataset.cov())
+```
+
+
+```python
+# Novos datasets de treino e teste com apenas os descritores 2 e 3, além da classe
+new_trainset = trainset.iloc[:,2:]
+new_testset  = testset.iloc[:,2:]
+
+# Ajustando os índices das colunas
+new_trainset.columns = range(new_trainset.shape[1])
+new_testset.columns = range(new_testset.shape[1])
+
+# Checando a acurácia
+evaluate_by_config(new_trainset, new_testset)
+```
 
 ## Referências
 
