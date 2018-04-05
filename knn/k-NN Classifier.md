@@ -3,6 +3,11 @@
 
 O **k-NN** é o classificador mais simples na área de aprendizado de máquina. Diferentemente das redes neurais, não se realiza de fato um **aprendizado**, em vez disso, o algoritmo verifica a distância entre o objeto a ser classificado e os vetores de característica. Devido a sua simplicidade, é bastante utilizado em *benchmarks* de classificadores mais complexos como, Artificial Neural Network (**ANN**) e Suport Vector Machine (**SVM**).
 
+<figure>
+    <img src="https://amueller.github.io/applied_ml_spring_2017/images/classifier_comparison.png" alt="Classifier Comparison">
+    <figcaption>Figura 1 - Comparação entre os classificadores (https://amueller.github.io/applied_ml_spring_2017/images/classifier_comparison.png).</figcaption>
+</figure>,
+
 ![classifier_comparison](https://amueller.github.io/applied_ml_spring_2017/images/classifier_comparison.png)
 
 ## 1. Introdução
