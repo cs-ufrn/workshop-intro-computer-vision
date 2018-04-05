@@ -1,6 +1,8 @@
-\frametitle{O que o computador percebe nessas imagens}\framesubtitle {As matrizes de \emph {pixels}}
+\frametitle{A percepção do computador}\framesubtitle {As matrizes de \emph {pixels}}
 
         À primeira vista\ldots
+
+        \pause
 
         \begin{columns}
             \begin{column}{0.4\textwidth}
