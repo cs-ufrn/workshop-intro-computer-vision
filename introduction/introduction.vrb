@@ -1,0 +1,69 @@
+\frametitle{A percepção do computador}\framesubtitle {As matrizes de \emph {pixels}}
+
+        À primeira vista\ldots
+
+        \pause
+
+        \begin{columns}
+            \begin{column}{0.4\textwidth}
+        {\tiny
+            %cars
+        \begin{lstlisting}
+[[ 42  23  19 ...,  21  29  25]
+ [ 40  40  36 ...,  24  24  21]
+ [ 28  30  36 ...,  30  13  27]
+ ...,
+ [115  78  45 ...,  28  36  17]
+ [ 67  78 192 ...,  35  31  36]
+ [ 67  79 104 ...,  34  32  31]]
+        \end{lstlisting}}
+
+        {\tiny
+            % cat
+        \begin{lstlisting}
+[[138 137 137 ..., 107 107 107]
+ [135 134 134 ..., 107 107 107]
+ [130 129 129 ..., 107 107 107]
+ ...,
+ [145 145 146 ..., 142 142 142]
+ [146 145 144 ..., 144 144 145]
+ [147 146 144 ..., 145 145 146]]
+        \end{lstlisting}}
+            \end{column}
+            \begin{column}{0.5\textwidth}
+
+        {\tiny
+            % hand
+        \begin{lstlisting}
+[[222 224 224 ..., 204 201 200]
+ [223 225 223 ..., 201 203 204]
+ [226 226 226 ..., 204 202 205]
+ ...,
+ [210 203 208 ..., 192 188 189]
+ [206 206 207 ..., 190 188 189]
+ [210 208 210 ..., 191 193 185]]
+        \end{lstlisting}}
+
+        {\tiny
+            % iris
+        \begin{lstlisting}
+[[ 48  45  40 ...,  28  29  31]
+ [ 45  46  43 ...,  28  29  30]
+ [ 41  43  43 ...,  27  27  29]
+ ...,
+ [101 101 103 ...,  64  51  32]
+ [ 98  97  99 ...,  63  71  57]
+ [ 97  97  97 ...,  38  57  65]]
+        \end{lstlisting}}
+
+            \end{column}
+        \end{columns}
+
+        \pause
+
+        \begin{block}{Imagens digitais monocromáticas}
+            Matrizes $I_j \in \mathbb{M}_{w_j \times h_j}([0,\ldots,255])$
+ ou funções $f_j:\{1,\ldots,w_j\} \times \{1,\ldots,h_j\}
+ \to [0,255]$, onde $w_j$ é a largura e $h_j$ é a altura da imagem $j$.
+        \end{block}
+
