@@ -5,6 +5,9 @@
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{myblue}{HTML}{006F94}
 
 \title{Visão Computacional}
 \subtitle{Breve introdução com foco na tarefa de reconhecimento}
@@ -156,8 +159,40 @@
             Diferença entre a maneira como o ser humano \textbf{percebe} o conteúdo de uma imagem
             e como a imagem é \textbf{representada} de forma manipulável no computador.
         \end{block}
-    
+
+        \vspace{.2cm}
+
+        \pause
+
+        Em outras palavras: enquanto vemos gatos e cachorros, o computador apenas
+        percebe números.\\~\\
+
+        \begin{figure}
+            \centering
+            \includegraphics[scale=0.3]{img/gatocachorro.jpg}
+        \end{figure}
+
+        \pause
+
+
     \end{frame}
+
+        {
+        \setbeamercolor{background canvas}{bg=myblue}
+        \color{white}
+        \begin{frame}[plain]
+            \begin{center}
+            \Large
+            
+            \begin{figure}
+                \centering
+                \includegraphics[scale=0.18]{img/doubt.png}
+            \end{figure}
+            Será que podemos vencer o \emph{gap} semântico?
+        
+            \end{center}
+        \end{frame}
+        }
 
 \section{Visão Computacional}
 
@@ -173,8 +208,10 @@
         \end{block}
 
         \pause
+
+        \vspace{.3cm}
         
-        Entre as tarefas compreendidas nesse âmbito, estão:
+        Entre as tarefas compreendidas nesse âmbito, estão principalmente:
         \begin{itemize}
             \item<3-> Análise de movimento;
             \item<4-> Reconstrução de cenas;
@@ -197,9 +234,9 @@
         Apresenta-se geralmente para três principais propósitos:
 
         \begin{itemize}
-            \item<3-> Classificação de objetos
-            \item<4-> Identificação
-            \item<5-> Detecção
+            \item<3-> Classificação de objetos;
+            \item<4-> Identificação;
+            \item<5-> Detecção.
         \end{itemize}
 
     \end{frame}
@@ -255,9 +292,9 @@
 
     \subsection{Técnicas envolvidas}
 
-        \begin{frame}{Técnicas}{Processamento de imagens digitais}
+        \begin{frame}{Técnicas envolvidas}{Processamento de imagens digitais}
             \begin{block}{De nível baixo}
-                Operações primitivas para remoção de ruídos, melhoria
+                Operações primitivas para remoção de ruídos, melhoria de
                 contraste e nitidez. Aqui, a entrada e a saída
                 do sistema são sempre imagens.
             \end{block}
@@ -273,19 +310,23 @@
             \end{block}
         \end{frame}
 
-        \begin{frame}{Técnicas}{\emph{Machine Learning}}
+        \begin{frame}{Técnicas envolvidas}{\emph{Machine Learning}}
             
             \begin{block}{\emph{Machine Learning}}
-                Área voltada à construir modelos computacionais capazes de 
+                Área voltada à construção de modelos computacionais capazes de 
                 aprimorar seu desempenho na resolução de problemas a partir da experiência.
             \end{block}
+            
+            \vspace{.3cm}
 
+            \pause
+        
             Entre as técnicas mais comuns nesse contexto, destacam-se:
             \begin{itemize}
-                \item Support Vector Machines;
-                \item Random Forests.
-                \item Multilayer Perceptron;
-                \item Convolutional Neural Networks (Deep Learning);
+                \item<3-> Support Vector Machines;
+                \item<4-> Random Forests;
+                \item<5-> Multilayer Perceptron;
+                \item<6-> Convolutional Neural Networks (Deep Learning).
             \end{itemize}
         
         \end{frame}
