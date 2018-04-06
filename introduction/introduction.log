@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Arch Linux) (preloaded format=pdflatex 2018.3.7)  6 APR 2018 01:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Arch Linux) (preloaded format=pdflatex 2018.4.5)  6 APR 2018 14:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**introduction
+**introduction.tex
 (./introduction.tex
 LaTeX2e <2017-04-15>
 Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
@@ -1390,9 +1390,6 @@ File: img/gesture_recognition.jpg Graphic file (type jpg)
 Package pdftex.def Info: img/gesture_recognition.jpg  used on input line 32.
 (pdftex.def)             Requested size: 289.84573pt x 188.86224pt.
 
-Overfull \vbox (5.58913pt too high) detected at line 32
- []
-
 [38
 
  <./img/gesture_recognition.jpg>]
@@ -1407,7 +1404,7 @@ ecognition}) has been already used, duplicate ignored
                    \relax 
 l.43 \end{frame}
                 
-Overfull \vbox (2.16739pt too high) detected at line 43
+Overfull \vbox (6.56741pt too high) detected at line 43
  []
 
 [39
@@ -1474,7 +1471,7 @@ Package pdftex.def Info: img/obr.jpg  used on input line 109.
  [45
 
  <./img/obr.jpg>]
-<img/fingerprint_recognition.jpg, id=1248, 192.72pt x 128.3997pt>
+<img/fingerprint_recognition.jpg, id=1249, 192.72pt x 128.3997pt>
 File: img/fingerprint_recognition.jpg Graphic file (type jpg)
 <use img/fingerprint_recognition.jpg>
 Package pdftex.def Info: img/fingerprint_recognition.jpg  used on input line 12
@@ -1483,7 +1480,7 @@ Package pdftex.def Info: img/fingerprint_recognition.jpg  used on input line 12
  [46
 
  <./img/fingerprint_recognition.jpg>]
-<img/iris_recognition.png, id=1274, 1027.84pt x 419.5675pt>
+<img/iris_recognition.png, id=1275, 1027.84pt x 419.5675pt>
 File: img/iris_recognition.png Graphic file (type png)
 <use img/iris_recognition.png>
 Package pdftex.def Info: img/iris_recognition.png  used on input line 133.
@@ -1518,13 +1515,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 20633 strings out of 492982
- 372236 string characters out of 6138580
- 541603 words of memory out of 5000000
- 23622 multiletter control sequences out of 15000+600000
- 15087 words of font info for 55 fonts, out of 8000000 for 9000
+ 20614 strings out of 492982
+ 371760 string characters out of 6138580
+ 540458 words of memory out of 5000000
+ 23603 multiletter control sequences out of 15000+600000
+ 14782 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 48i,14n,51p,775b,1358s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 48i,14n,51p,779b,1358s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texmf-dist/fonts/type1/publi
@@ -1538,7 +1535,7 @@ y10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/s
 hare/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texmf-dist
 /fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-dist/fonts/ty
 pe1/public/amsfonts/symbols/msbm10.pfb>
-Output written on introduction.pdf (47 pages, 6825726 bytes).
+Output written on introduction.pdf (47 pages, 6825548 bytes).
 PDF statistics:
  1379 PDF objects out of 1440 (max. 8388607)
  1277 compressed objects within 13 object streams
