@@ -33,21 +33,12 @@ Neste problema será utilizado o *dataset* <a href="http://archive.ics.uci.edu/m
 
 
 ```python
+# Importações das bibliotecas
 import pandas as pd
-
-# Carregando o dataset
-dataset = pd.read_csv("dataset/iris/dataset.csv", header=None)
-
-class_column = len (dataset.columns) - 1
-
-# Checando os dados
-print (dataset)
-
-class_names = pd.unique(dataset[class_column])
-
-# Descobrindo o número de instâncias por classes
-for i in class_names:
-    print( i + ': ' + str(len (dataset.loc[dataset[class_column] == i])) )
+from math import sqrt,floor
+import numpy as np
+from operator import itemgetter
+from collections import Counter
 ```
 
 ## 2. Princípio de funcionamento
@@ -65,8 +56,6 @@ A ideia básica do classificador **k-NN** está em medir a *distância* entre o 
 
 
 ```python
-from math import sqrt
-
 def euclidean(p, q):
     if len(p) != len (q):
         return -1
@@ -111,79 +100,86 @@ O processo geral de implementação do **k-NN** segue as seguintes etapas:
 
 
 ```python
-import numpy as np
+# Carregando o dataset
+dataset = pd.read_csv("dataset/iris/dataset.csv", header=None)
 
-# Embaralhando os dados
-dataset = dataset.iloc[np.random.permutation(len(dataset))]
+# Índice das classes
+class_column = len (dataset.columns) - 1
 
-# Separando o dataset por classes
-setosa     = dataset.loc[dataset[class_column] == class_names[0]]
-versicolor = dataset.loc[dataset[class_column] == class_names[1]]
-virginica  = dataset.loc[dataset[class_column] == class_names[2]]
+# Checando os dados
+print (dataset)
+
+# Lista com os nomes das classes
+class_names = pd.unique(dataset[class_column])
+
+# Descobrindo o número de instâncias por classes; e
+# Definindo número mínimo de classes
+min_classes = len(dataset)
+for i in class_names:
+    print( str(i) + ': ' + str(len (dataset.loc[dataset[class_column] == i])) )
+    min_classes = min(min_classes, len (dataset.loc[dataset[class_column] == i]))
 ```
 
 ### 3.2 Separação dos conjuntos
 
 
 ```python
-train_percentage = 0.8
+train_percentage = 0.7
 
 # Obtendo os conjuntos de treino e de testes
-trainset = pd.concat([    setosa[0: int (len(setosa)     * train_percentage + 1)],
-                      versicolor[0: int (len(versicolor) * train_percentage + 1)],
-                       virginica[0: int (len(virginica)  * train_percentage + 1)]])
 
-testset =  pd.concat([    setosa[int (len(setosa)     * train_percentage + 1) : ],
-                      versicolor[int (len(versicolor) * train_percentage + 1) : ],
-                       virginica[int (len(virginica)  * train_percentage + 1) : ]])
+trainset = dataset.loc[dataset[class_column] == class_names[0]][0:floor(train_percentage * min_classes)]
+testset  = dataset.loc[dataset[class_column] == class_names[0]][floor(train_percentage * min_classes):]
 
+for i in range(1,len(class_names)):
+    trainset = pd.concat([trainset, dataset.loc[dataset[class_column] == class_names[i]][0:floor(train_percentage * min_classes)]])
+    testset  = pd.concat([testset,  dataset.loc[dataset[class_column] == class_names[i]][floor(train_percentage * min_classes):]])
+
+print("Tamanho trainset: " + str(len(trainset)))
+print("Tamanho testset: " + str(len(testset)))
 ```
 
 ### 3.3 Classificação
 
 
 ```python
-from operator import itemgetter
-from collections import Counter
-
 # Criando a função de classificação
-def knn(k, train, element):
+def knn(k, train, element,function):
     distance = []
     
     local_class_column = len (train.columns) - 1
     
     for _, row in train.iterrows():
-        distance.append((manhattan(row[0:local_class_column], element[0:local_class_column]), row[local_class_column]))
+        distance.append((function(row[0:local_class_column], element[0:local_class_column]), row[local_class_column]))
     
-    distance.sort(key=itemgetter(0))
+    distance = sorted(distance)
     distance = [classes[1] for classes in distance[0:k]]
     
     most_common = Counter(distance)
-    #print("Classification: " + max(most_common, key=most_common.get) + ", " + element[4])
     return max(most_common, key=most_common.get)
 
 # Função de avaliação de acurácia
-def evaluate(k, train, test):
+def evaluate(k, train, test, function):
     acc = 0
     
     local_class_column = len (train.columns) - 1
     
     for _, row in test.iterrows():
-        if( knn(k, train, row) == row[local_class_column] ):
+        if( knn(k, train, row, function) == row[local_class_column] ):
             acc += 1
     
     return acc / len(test)
 
 # Descobrindo a acurácia para todas as configurações possíveis
-def evaluate_by_config(train, test):
-    for k in range(1,len(dataset) + 1):
-        print("K = " + str(k) + ", acc = " + str(evaluate(k, train, test)))
+def evaluate_by_config(train, test, function):
+    for k in range(1, min_classes + 1):
+        print("K = " + str(k) + ", acc = " + str(evaluate(k, train, test, function)))
 ```
 
 
 ```python
 # Checando a melhor configuração
-evaluate_by_config(trainset, testset)
+evaluate_by_config(trainset, testset,euclidean)
 ```
 
 ## 4 Reduzindo os dados e mantendo acurácia
@@ -222,7 +218,7 @@ new_trainset.columns = range(new_trainset.shape[1])
 new_testset.columns = range(new_testset.shape[1])
 
 # Checando a acurácia
-evaluate_by_config(new_trainset, new_testset)
+evaluate_by_config(new_trainset, new_testset, euclidean)
 ```
 
 ## Referências
