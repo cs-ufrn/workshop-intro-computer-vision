@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: introduction.aux
+The style file: amsalpha.bst
+Database file #1: compvision.bib.bib
+You've used 3 entries,
+            2624 wiz_defined-function locations,
+            574 strings with 4666 characters,
+and the built_in function-call counts, 847 in all, are:
+= -- 61
+> -- 24
+< -- 3
++ -- 6
+- -- 6
+* -- 54
+:= -- 146
+add.period$ -- 3
+call.type$ -- 3
+change.case$ -- 16
+chr.to.int$ -- 3
+cite$ -- 3
+duplicate$ -- 48
+empty$ -- 82
+format.name$ -- 12
+if$ -- 168
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 9
+newline$ -- 19
+num.names$ -- 9
+pop$ -- 26
+preamble$ -- 1
+purify$ -- 18
+quote$ -- 0
+skip$ -- 31
+stack$ -- 0
+substring$ -- 21
+swap$ -- 3
+text.length$ -- 3
+text.prefix$ -- 3
+top$ -- 0
+type$ -- 12
+warning$ -- 0
+while$ -- 6
+width$ -- 5
+write$ -- 42

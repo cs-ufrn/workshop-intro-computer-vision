@@ -1,0 +1,22 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{Ros17}
+
+\bibitem[Mit97]{mitchell1997}
+Tom~M. Mitchell, \emph{Machine learning}, 1 ed., McGraw-Hill series in computer
+  science, McGraw-Hill, 1997.
+
+\bibitem[Ros17]{adrian2017}
+Adrian Rosebrock, \emph{Deep learning for computer vision with python}, Online,
+  2017.
+
+\bibitem[Sze11]{szeliski2011}
+Richard Szeliski, \emph{Computer vision: Algorithms and applications}, Texts in
+  Computer Science, Springer, 2011.
+
+\end{thebibliography}

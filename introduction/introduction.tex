@@ -1,7 +1,7 @@
 \documentclass{beamer}
 
 \usepackage[utf8]{inputenc}
-\usepackage[brazilian]{babel}
+\usepackage[portuguese]{babel}
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{listings}
@@ -15,6 +15,7 @@
 \institute[]
 {
 	\inst{1}%
+    IEEE Computer Society\\
 	Universidade Federal do Rio Grande do Norte
 }
 \date{}
@@ -157,7 +158,7 @@
 
         \begin{block}{\emph{Gap} semântico}
             Diferença entre a maneira como o ser humano \textbf{percebe} o conteúdo de uma imagem
-            e como a imagem é \textbf{representada} de forma manipulável no computador.
+            e como a imagem é \textbf{representada} de forma manipulável no computador \cite{adrian2017}.
         \end{block}
 
         \vspace{.2cm}
@@ -211,7 +212,7 @@
 
         \vspace{.3cm}
         
-        Entre as tarefas compreendidas nesse âmbito, estão principalmente:
+        Entre as tarefas compreendidas nesse âmbito, estão principalmente \cite{szeliski2011}:
         \begin{itemize}
             \item<3-> Análise de movimento;
             \item<4-> Reconstrução de cenas;
@@ -314,7 +315,8 @@
             
             \begin{block}{\emph{Machine Learning}}
                 Área voltada à construção de modelos computacionais capazes de 
-                aprimorar seu desempenho na resolução de problemas a partir da experiência.
+                aprimorar seu desempenho na resolução de problemas a partir da experiência 
+                \cite{mitchell1997}.
             \end{block}
             
             \vspace{.3cm}
@@ -374,5 +376,10 @@
 
     \subsection{Aplicações}
     \input{tex/aplicacoes.tex}
+
+    \begin{frame}{Referências}
+        \bibliographystyle{amsalpha}
+        \bibliography{compvision.bib}
+    \end{frame}
 
 \end{document}
