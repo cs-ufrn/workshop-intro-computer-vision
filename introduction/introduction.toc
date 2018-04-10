@@ -1,4 +1,5 @@
-\babel@toc {brazilian}{}
+\beamer@endinputifotherversion {3.36pt}
+\select@language {portuguese}
 \beamer@sectionintoc {1}{O gap sem\IeC {\^a}ntico}{2}{0}{1}
 \beamer@sectionintoc {2}{Vis\IeC {\~a}o Computacional}{12}{0}{2}
 \beamer@subsectionintoc {2}{1}{Para al\IeC {\'e}m de pixels}{13}{0}{2}
