@@ -1,0 +1,385 @@
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{myblue}{HTML}{006F94}
+
+\title{Visão Computacional}
+\subtitle{Breve introdução com foco na tarefa de reconhecimento}
+\author{Vitor Greati\inst{1} \and Vinícius Campos\inst{1} \and Artur Curinga\inst{1}}
+\institute[]
+{
+	\inst{1}%
+    IEEE Computer Society\\
+	Universidade Federal do Rio Grande do Norte
+}
+\date{}
+\subject{Computer Science}
+
+% Table of contents at the beginning of each section
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Sumário}
+    \tableofcontents[currentsection, currentsubsection]
+  \end{frame}
+}
+
+% Table of contents at the beginning of each subsection
+%\AtBeginSubsection[]
+%{
+%  \begin{frame}
+%    \frametitle{Table of Contents}
+%    \tableofcontents[currentsection,currentsubsection]
+%  \end{frame}
+%}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{O gap semântico}
+
+    \begin{frame}{Percepção humana}
+
+        O que você percebe nestas imagens?
+
+        \begin{figure}
+            \centering
+            \begin{subfigure}[b]{0.5\textwidth}
+                \centering
+                \includegraphics[height=2.6cm]{img/gcarpeople.jpg}
+                \label{fig:carpeople}
+            \end{subfigure}~
+            \begin{subfigure}[b]{0.5\textwidth}
+                \centering
+                \includegraphics[height=2.6cm]{img/ghandwriting.jpg}
+                \label{fig:handwriting}
+            \end{subfigure}
+
+            \begin{subfigure}[b]{0.5\textwidth}
+                \centering
+                \includegraphics[height=2.6cm]{img/gcat.jpg}
+                \label{fig:carpeople}
+            \end{subfigure}~
+            \begin{subfigure}[b]{0.5\textwidth}
+                \centering
+                \includegraphics[height=2.6cm]{img/giris.jpg}
+                \label{fig:iris}
+            \end{subfigure}
+        \end{figure}
+
+        \pause
+
+        A facilidade com que respondemos a essa pergunta
+        se deve ao nosso sistema visual \textbf{nativo} 
+        extremamente
+        poderoso!
+
+    \end{frame}
+
+    \begin{frame}[fragile]{A percepção do computador}{As matrizes de \emph{pixels}}
+
+        À primeira vista\ldots
+
+        \pause
+
+        \begin{columns}
+            \begin{column}{0.4\textwidth}
+        {\tiny
+            %cars
+        \begin{lstlisting}
+[[ 42  23  19 ...,  21  29  25]
+ [ 40  40  36 ...,  24  24  21]
+ [ 28  30  36 ...,  30  13  27]
+ ...,
+ [115  78  45 ...,  28  36  17]
+ [ 67  78 192 ...,  35  31  36]
+ [ 67  79 104 ...,  34  32  31]]
+        \end{lstlisting}}
+
+        {\tiny
+            % cat
+        \begin{lstlisting}
+[[138 137 137 ..., 107 107 107]
+ [135 134 134 ..., 107 107 107]
+ [130 129 129 ..., 107 107 107]
+ ..., 
+ [145 145 146 ..., 142 142 142]
+ [146 145 144 ..., 144 144 145]
+ [147 146 144 ..., 145 145 146]]
+        \end{lstlisting}}
+            \end{column}
+            \begin{column}{0.5\textwidth}
+
+        {\tiny
+            % hand
+        \begin{lstlisting}
+[[222 224 224 ..., 204 201 200]
+ [223 225 223 ..., 201 203 204]
+ [226 226 226 ..., 204 202 205]
+ ..., 
+ [210 203 208 ..., 192 188 189]
+ [206 206 207 ..., 190 188 189]
+ [210 208 210 ..., 191 193 185]]
+        \end{lstlisting}}
+
+        {\tiny
+            % iris
+        \begin{lstlisting}
+[[ 48  45  40 ...,  28  29  31]
+ [ 45  46  43 ...,  28  29  30]
+ [ 41  43  43 ...,  27  27  29]
+ ..., 
+ [101 101 103 ...,  64  51  32]
+ [ 98  97  99 ...,  63  71  57]
+ [ 97  97  97 ...,  38  57  65]]
+        \end{lstlisting}}
+
+            \end{column}
+        \end{columns}
+
+        \pause
+
+        \begin{block}{Imagens digitais monocromáticas}
+            Matrizes $I_j \in \mathbb{M}_{w_j \times h_j}([0,\ldots,255])$
+ ou funções $f_j:\{1,\ldots,w_j\} \times \{1,\ldots,h_j\} 
+ \to [0,255]$, onde $w_j$ é a largura e $h_j$ é a altura da imagem $j$.
+        \end{block}
+
+\end{frame}
+    
+    \begin{frame}{O \emph{gap} semântico}{Percepção humana $\times$ percepção da máquina}
+
+        \begin{block}{\emph{Gap} semântico}
+            Diferença entre a maneira como o ser humano \textbf{percebe} o conteúdo de uma imagem
+            e como a imagem é \textbf{representada} de forma manipulável no computador \cite{adrian2017}.
+        \end{block}
+
+        \vspace{.2cm}
+
+        \pause
+
+        Em outras palavras: enquanto vemos gatos e cachorros, o computador apenas
+        percebe números.\\~\\
+
+        \begin{figure}
+            \centering
+            \includegraphics[scale=0.3]{img/gatocachorro.jpg}
+        \end{figure}
+
+        \pause
+
+
+    \end{frame}
+
+        {
+        \setbeamercolor{background canvas}{bg=myblue}
+        \color{white}
+        \begin{frame}[plain]
+            \begin{center}
+            \Large
+            
+            \begin{figure}
+                \centering
+                \includegraphics[scale=0.18]{img/doubt.png}
+            \end{figure}
+            Será que podemos vencer o \emph{gap} semântico?
+        
+            \end{center}
+        \end{frame}
+        }
+
+\section{Visão Computacional}
+
+\subsection{Para além de pixels}
+
+\begin{frame}{Visão Computacional}{O que é?}
+
+        \begin{block}{Visão Computacional}
+        Visão Computacional é uma área da Ciência da Computação
+        cujo propósito é capacitar os computadores para extraírem
+        informações de imagens, ou seja, permitir que tenham
+        um entendimento visual do mundo.
+        \end{block}
+
+        \pause
+
+        \vspace{.3cm}
+        
+        Entre as tarefas compreendidas nesse âmbito, estão principalmente \cite{szeliski2011}:
+        \begin{itemize}
+            \item<3-> Análise de movimento;
+            \item<4-> Reconstrução de cenas;
+            \item<5-> Restauração de imagens;
+            \item<6-> \textbf{Reconhecimento}.
+        \end{itemize} 
+
+
+    \end{frame}
+
+\subsection{Reconhecimento em Visão Computacional}
+    \begin{frame}{Reconhecimento em Visão Computacional}{O que é?}
+
+        \begin{block}{Reconhecimento}
+            Tarefa de determinar se um certo fato (ocorrência ou atividade) está presente em uma imagem ou vídeo. 
+        \end{block}
+
+        \pause
+
+        Apresenta-se geralmente para três principais propósitos:
+
+        \begin{itemize}
+            \item<3-> Classificação de objetos;
+            \item<4-> Identificação;
+            \item<5-> Detecção.
+        \end{itemize}
+
+    \end{frame}
+
+    \begin{frame}{Reconhecimento em Visão Computacional}{Desafios}
+        
+        Imagine que se queira reconhecer os gatos em uma imagem.
+        \\~\\
+        Quais os desafios envolvidos nisso?
+
+        \pause
+    
+        \begin{alertblock}{Variação de ponto de vista}
+            Não importa sob qual ângulo se fotografe um gato:
+            ele continuará sendo um gato.
+        \end{alertblock}
+
+        \begin{alertblock}{Variação de escala}
+            Não importa a que distância o gato estará da câmera:
+            ele continuará sendo um gato.
+        \end{alertblock}
+
+        \begin{alertblock}{Deformação}
+            Um gato pode estar esticando suas pernas ou/e contorcendo
+            seu pescoço para se lamber, e isso não o faz ser
+            outro ser além de um gato na imagem.
+        \end{alertblock}
+
+    \end{frame}
+
+    \begin{frame}{Visão Computacional}{Desafios}
+
+        \begin{alertblock}{Oclusão}
+            Um gato pode estar espiando o mundo ao redor de dentro de uma
+            caixa, apenas com a cabeça de fora, e ele continuará sendo um gato à lente de uma câmera
+            em frente à caixa.
+        \end{alertblock}
+
+        \begin{alertblock}{Iluminação}
+            Um gato num estacionamento mal iluminado ainda é um gato.
+        \end{alertblock}
+
+        \begin{alertblock}{Ruído de fundo}
+            Um gato em frente à uma tela de TV repleta de ruído
+            ainda é um gato.
+        \end{alertblock}
+
+        \begin{alertblock}{Variações intra-classe}
+            Gatos de diversas raças, cores e tamanhos serão
+            sempre gatos.
+        \end{alertblock}
+    \end{frame}
+
+    \subsection{Técnicas envolvidas}
+
+        \begin{frame}{Técnicas envolvidas}{Processamento de imagens digitais}
+            \begin{block}{De nível baixo}
+                Operações primitivas para remoção de ruídos, melhoria de
+                contraste e nitidez. Aqui, a entrada e a saída
+                do sistema são sempre imagens.
+            \end{block}
+            \begin{block}{De nível médio}
+                Segmentação e descrição dos objetos em uma forma 
+                adequada para o processamento e classificação de objetos individuais.
+                Nesta, a entrada é uma imagem, e a saída geralmente é um
+                conjunto de atributos extraídos da imagem.
+            \end{block}
+            \begin{block}{De nível alto}
+                Reconhecimento de objetos individuais,
+                geralmente por meio de técnicas de reconhecimento de padrões (\emph{Machine Learning}). 
+            \end{block}
+        \end{frame}
+
+        \begin{frame}{Técnicas envolvidas}{\emph{Machine Learning}}
+            
+            \begin{block}{\emph{Machine Learning}}
+                Área voltada à construção de modelos computacionais capazes de 
+                aprimorar seu desempenho na resolução de problemas a partir da experiência 
+                \cite{mitchell1997}.
+            \end{block}
+            
+            \vspace{.3cm}
+
+            \pause
+        
+            Entre as técnicas mais comuns nesse contexto, destacam-se:
+            \begin{itemize}
+                \item<3-> Support Vector Machines;
+                \item<4-> Random Forests;
+                \item<5-> Multilayer Perceptron;
+                \item<6-> Convolutional Neural Networks (Deep Learning).
+            \end{itemize}
+        
+        \end{frame}
+
+    \subsubsection{Abordagem tradicional}
+    \begin{frame}{Abordagem tradicional}{Baseada em extração de descritores}
+
+        A abordagem tradicional para a tarefa de reconhecimento 
+        combinava as etapas:
+            \begin{enumerate}
+                \item aquisição do conjunto de imagens;
+                \item divisão entre conjuntos de treino e testes;
+                \item \textbf{extração de descritores};
+                \item treinamento de um modelo de aprendizagem.
+                \item avaliação do modelo.
+            \end{enumerate}
+
+        As imagens, nessa abordagem, perdem seu
+        formato original de matrizes de pixels
+        e se tornam \textbf{vetores de características}
+        produzidos com o objetivo de \textbf{descrever
+        os objetos} de interesse.
+    \end{frame}
+
+    \subsubsection{Abordagem com Deep Learning}
+    \begin{frame}{Abordagem com Deep Learning}{Convolutional Neural Networks}
+        
+        Com as Deep Neural Networks, mais especificamente,
+        as Redes Neurais Convolucionais, o processo demanda menos
+        pré-processamento: a redes neural
+        recebe \textbf{toda a matriz de pixels}
+        e, em suas camadas, abstrai as características
+        dos objetos, \textbf{produzindo elas mesmas os descritores}.
+        \\~\\
+        Com isso, o \emph{framework} geral nessa abordagem 
+        se resume a:
+        \begin{enumerate}
+            \item aquisição das imagens;
+            \item divisão entre conjuntos de treino e testes;
+            \item treinamento de um modelo de aprendizagem.
+            \item avaliação do modelo.
+        \end{enumerate}
+   
+    \end{frame}
+
+    \subsection{Aplicações}
+    \input{tex/aplicacoes.tex}
+
+    \begin{frame}{Referências}
+        \bibliographystyle{amsalpha}
+        \bibliography{compvision.bib}
+    \end{frame}
+
+\end{document}
