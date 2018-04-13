@@ -9,5 +9,6 @@ specialized in the classical Iris dataset, written in a Jupyter Notebook.
 ## Experiences
 
 - IEEE CS UFRN Trainee program (10/04/2018)
+
     Presented by Vitor, Vinícius and Artur as part of the trainee process
     for new members of the IEEE Computer Society Student Chapter at UFRN.
